@@ -172,19 +172,19 @@ const ConsultantCard = ({ consultant }: { consultant: typeof consultants[0] }) =
       </div>
       <div className="p-6">
         <h3 className="mb-2 text-xl font-bold">{consultant.name}</h3>
-        <p className="mb-1 text-sm font-semibold text-navy">{consultant.title}</p>
+        <p className="mb-1 text-sm font-semibold text-[color:var(--color-navy)]">{consultant.title}</p>
         <p className="mb-4 text-gray-600">{consultant.shortBio}</p>
         <div className="mb-4">
           <h4 className="mb-2 text-sm font-semibold">Specialties:</h4>
           <div className="flex flex-wrap gap-2">
             {consultant.specialties.map((specialty, index) => (
-              <span key={index} className="px-2 py-1 text-xs text-white rounded-full bg-navy">
+              <span key={index} className="px-2 py-1 text-xs text-white rounded-full bg-[color:var(--color-navy)]">
                 {specialty}
               </span>
             ))}
           </div>
         </div>
-        <Link href={`/consultants/${consultant.id}`} className="inline-block px-4 py-2 text-white rounded bg-navy hover:bg-opacity-90">
+        <Link href={`/consultants/${consultant.id}`} className="inline-block px-4 py-2 text-white rounded bg-[color:var(--color-navy)] hover:bg-opacity-90">
           View Profile
         </Link>
       </div>
@@ -210,7 +210,7 @@ const SpecialtyFilter = ({
           onClick={() => setSelectedSpecialty('')}
           className={`px-4 py-2 text-sm rounded-full transition-colors ${
             selectedSpecialty === '' 
-              ? 'bg-navy text-white' 
+              ? 'bg-[color:var(--color-navy)] text-white' 
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
           }`}
         >
@@ -222,7 +222,7 @@ const SpecialtyFilter = ({
             onClick={() => setSelectedSpecialty(specialty)}
             className={`px-4 py-2 text-sm rounded-full transition-colors ${
               selectedSpecialty === specialty 
-                ? 'bg-navy text-white' 
+                ? 'bg-[color:var(--color-navy)] text-white' 
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             }`}
           >
