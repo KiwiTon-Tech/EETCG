@@ -13,7 +13,7 @@ export const Footer = () => {
           <div>
             <h3 className="mb-4 text-xl font-bold text-[color:var(--color-gold)]">Elite Enterprise Transformation</h3>
             <p className="mb-4">
-              A minority woman owned consulting firm specializing in transformative business solutions.
+              A woman and minority owned consulting firm specializing in transformative business solutions.
             </p>
             <p className="text-sm">
               &copy; {currentYear} Elite Enterprise Transformation Consulting Group. All rights reserved.

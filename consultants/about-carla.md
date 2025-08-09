@@ -1,6 +1,6 @@
 About Me
 
-Hello, I’m Carla Monroe, the owner and principal consultant of Elite Enterprise Transformation Consulting Group. As a certified life coach, seasoned storyteller, and business strategist, I am passionate about empowering organizations to achieve their full potential through transformative solutions. Based in Beech Island, I lead a black, female-owned consulting firm dedicated to driving success in Project Management, Program Management, Strategic Planning, Data & Analytics Consulting, Vendor Management, and AI Consulting.
+Hello, I’m Carla Monroe, the owner and principal consultant of Elite Enterprise Transformation Consulting Group. As a certified life coach, seasoned storyteller, and business strategist, I am passionate about empowering organizations to achieve their full potential through transformative solutions. Based in Beech Island, I lead a woman and minority owned consulting firm dedicated to driving success in Project Management, Program Management, Strategic Planning, Data & Analytics Consulting, Vendor Management, and AI Consulting.
 
 With certifications as a Life Coach and Spiritual Coach from the Life Purpose Institute (recognized by the International Coaching Federation), I bring a unique blend of empathy, creativity, and strategic insight to every client engagement. My approach is rooted in storytelling—crafting narratives that align your business goals with actionable strategies to inspire growth and change.
 

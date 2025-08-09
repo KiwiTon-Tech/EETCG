@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This repository contains the source code for the Elite Enterprise Transformation Consulting Group website (https://eliteenterprisetcg.com/), built using Next.js 15.4.6 with static export for Cloudflare Pages deployment. The website is designed to project a professional, modern, and client-focused image for a black, female-owned consulting firm specializing in Project Management, Program Management, Strategic Planning, Data & Analytics, Vendor Management, and AI Consulting.
+This repository contains the source code for the Elite Enterprise Transformation Consulting Group website (https://eliteenterprisetcg.com/), built using Next.js 15.4.6 with static export for Cloudflare Pages deployment. The website is designed to project a professional, modern, and client-focused image for a woman and minority owned consulting firm specializing in Project Management, Program Management, Strategic Planning, Data & Analytics, Vendor Management, and AI Consulting.
 
 ## Build Status
 
@@ -120,7 +120,7 @@ Route (app)                                 Size  First Load JS
 
 ### About:
 - Company mission, vision, and values.
-- Highlight black, female-owned identity and expertise.
+- Highlight woman and minority owned identity and expertise.
 - Team overview with a link to the Consultants page.
 
 ### Services:

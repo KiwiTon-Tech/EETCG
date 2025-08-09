@@ -11,7 +11,7 @@ export default function About() {
         <div className="container px-4 mx-auto text-center">
           <h1 className="mb-4 text-4xl font-bold md:text-5xl">About Us</h1>
           <p className="max-w-2xl mx-auto text-xl">
-            A black, female-owned consulting firm dedicated to transforming businesses through expert guidance and innovative solutions.
+            A woman and minority owned consulting firm dedicated to transforming businesses through expert guidance and innovative solutions.
           </p>
         </div>
       </section>
@@ -63,7 +63,7 @@ export default function About() {
             <h2 className="mb-8 text-3xl font-bold text-center">Our Story</h2>
             <div className="p-8 bg-white rounded-lg shadow-md">
               <p className="mb-4 text-gray-600">
-                Elite Enterprise Transformation Consulting Group was founded in Beech Island with a vision to bring world-class consulting services to organizations seeking transformative change. As a black, female-owned business, we bring a unique perspective and diverse approach to solving complex business challenges.
+                Elite Enterprise Transformation Consulting Group was founded in Beech Island with a vision to bring world-class consulting services to organizations seeking transformative change. As a woman and minority owned business, we bring a unique perspective and diverse approach to solving complex business challenges.
               </p>
               <p className="mb-4 text-gray-600">
                 Our founder recognized a gap in the consulting industry: the need for a firm that combines deep technical expertise with a genuine understanding of the human elements that drive organizational success. This insight led to the creation of EETCG, a firm dedicated to delivering holistic transformation solutions.

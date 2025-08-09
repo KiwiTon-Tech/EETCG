@@ -12,7 +12,7 @@ const consultants = [
     title: 'Owner & Principal Consultant',
     specialties: ['Project Management', 'Program Management', 'Strategic Planning', 'Data & Analytics', 'Vendor Management', 'AI Consulting'],
     shortBio: 'Certified life coach, seasoned storyteller, and business strategist passionate about empowering organizations to achieve their full potential through transformative solutions.',
-    fullBio: `Hello, I'm Carla Monroe, the owner and principal consultant of Elite Enterprise Transformation Consulting Group. As a certified life coach, seasoned storyteller, and business strategist, I am passionate about empowering organizations to achieve their full potential through transformative solutions. Based in Beech Island, I lead a black, female-owned consulting firm dedicated to driving success in Project Management, Program Management, Strategic Planning, Data & Analytics Consulting, Vendor Management, and AI Consulting.
+    fullBio: `Hello, I'm Carla Monroe, the owner and principal consultant of Elite Enterprise Transformation Consulting Group. As a certified life coach, seasoned storyteller, and business strategist, I am passionate about empowering organizations to achieve their full potential through transformative solutions. Based in Beech Island, I lead a woman and minority owned consulting firm dedicated to driving success in Project Management, Program Management, Strategic Planning, Data & Analytics Consulting, Vendor Management, and AI Consulting.
 
 With certifications as a Life Coach and Spiritual Coach from the Life Purpose Institute (recognized by the International Coaching Federation), I bring a unique blend of empathy, creativity, and strategic insight to every client engagement. My approach is rooted in storytelling—crafting narratives that align your business goals with actionable strategies to inspire growth and change.
 
@@ -109,7 +109,7 @@ With a proven track record of breaking down technical requirements into actionab
 
 Senior Consultant, Elite Enterprise Transformation Consulting Group
 
-Welcome to the journey of transformation with Marilyn Ortiz, a dynamic Senior Consultant at Elite Enterprise Transformation Consulting Group. With a passion for driving organizational success through innovative strategies and human-centered solutions, Marilyn brings a wealth of expertise in Project Management, Strategic Planning, and AI Consulting to our black, female-owned firm based in Beech Island.
+Welcome to the journey of transformation with Marilyn Ortiz, a dynamic Senior Consultant at Elite Enterprise Transformation Consulting Group. With a passion for driving organizational success through innovative strategies and human-centered solutions, Marilyn brings a wealth of expertise in Project Management, Strategic Planning, and AI Consulting to our woman and minority owned firm based in Beech Island.
 
 Marilyn's approach is rooted in the power of connection and collaboration, blending analytical precision with creative problem-solving to deliver measurable results. Her professional journey spans diverse industries, where she has honed her ability to navigate complex challenges, foster stakeholder alignment, and implement data-driven strategies that propel businesses forward. Whether guiding organizations through transformative change or leveraging cutting-edge AI tools to unlock new opportunities, Marilyn is dedicated to crafting tailored solutions that resonate with clients' unique goals.
 
