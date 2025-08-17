@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { OrganizationJsonLd, LocalBusinessJsonLd } from '../components/JsonLd';
 
 // Service card component
 const ServiceCard = ({ title, description, icon }: { title: string; description: string; icon: React.ReactNode }) => (
@@ -91,6 +92,10 @@ export default function Home() {
 
   return (
     <>
+      {/* Add JSON-LD structured data */}
+      <OrganizationJsonLd />
+      <LocalBusinessJsonLd />
+      
       {/* Hero Section */}
       <section className="relative flex items-center justify-center py-20 text-white bg-[color:var(--color-navy)]">
         <div className="container relative z-10 px-4 mx-auto text-center">

@@ -2,7 +2,7 @@
   "name": "elite-enterprise-consulting",
   "version": "0.1.0",
   "private": true,
-"type": "module",
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -17,11 +17,12 @@
     "axios": "^1.11.0",
     "dotenv": "^17.2.1",
     "next": "^15.3.3",
+    "next-seo": "^6.8.0",
     "react": "19.1.1",
     "react-dom": "19.1.1"
   },
   "devDependencies": {
-  "@babel/core": "^7.28.0",
+    "@babel/core": "^7.28.0",
     "@babel/helpers": "^7.28.2",
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
