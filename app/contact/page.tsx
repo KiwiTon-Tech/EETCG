@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { LocalBusinessJsonLd } from '../../components/JsonLd';
 
 export default function ContactPage() {
   const router = useRouter();
@@ -56,6 +57,9 @@ export default function ContactPage() {
 
   return (
     <div className="py-32">
+      {/* Add JSON-LD structured data */}
+      <LocalBusinessJsonLd />
+      
       <div className="container">
         {/* Page Header */}
         <div className="mb-12 text-center">

@@ -2,10 +2,56 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { ServiceJsonLd } from '../../components/JsonLd';
+import { siteConfig } from '../metadata.config';
 
 export default function Services() {
+  // Services data for JSON-LD
+  const services = [
+    {
+      name: "Project Management",
+      description: "Expert guidance to plan, execute, and deliver projects on time, within budget, and to specification.",
+      url: `/services#project-management`
+    },
+    {
+      name: "Program Management",
+      description: "Coordinate multiple related projects to achieve strategic business objectives and maximize value.",
+      url: `/services#program-management`
+    },
+    {
+      name: "Strategic Planning",
+      description: "Develop clear, actionable strategies that align with your vision and drive sustainable growth.",
+      url: `/services#strategic-planning`
+    },
+    {
+      name: "Organizational Change Management",
+      description: "Guide your organization through transitions with minimal disruption and maximum adoption.",
+      url: `/services#organizational-change-management`
+    },
+    {
+      name: "Training and Facilitation",
+      description: "Develop your team's capabilities through expert-led training programs and workshop facilitation.",
+      url: `/services#training-and-facilitation`
+    },
+    {
+      name: "Business Analysis",
+      description: "Identify business needs and determine solutions to business problems through detailed analysis.",
+      url: `/services#business-analysis`
+    }
+  ];
+
   return (
     <>
+      {/* Add JSON-LD structured data for each service */}
+      {services.map((service, index) => (
+        <ServiceJsonLd 
+          key={index} 
+          name={service.name} 
+          description={service.description} 
+          url={service.url} 
+        />
+      ))}
+      
       {/* Page Header */}
       <section className="pt-32 pb-16 text-white bg-[color:var(--color-navy)]">
         <div className="container px-4 mx-auto text-center">

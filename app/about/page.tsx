@@ -2,10 +2,14 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { OrganizationJsonLd } from '../../components/JsonLd';
 
 export default function About() {
   return (
     <>
+      {/* Add JSON-LD structured data */}
+      <OrganizationJsonLd />
+      
       {/* Page Header */}
       <section className="pt-32 pb-16 text-white bg-[color:var(--color-navy)]">
         <div className="container px-4 mx-auto text-center">
