@@ -13,10 +13,10 @@
     "serve": "npx serve@latest out"
   },
   "dependencies": {
-    "@next/env": "^15.4.5",
-    "axios": "^1.11.0",
-    "dotenv": "^17.2.1",
-    "next": "^15.3.3",
+    "@next/env": "^15.5.3",
+    "axios": "^1.12.2",
+    "dotenv": "^17.2.2",
+    "next": "^15.5.3",
     "react": "19.1.1",
     "react-dom": "19.1.1"
   },
