@@ -13,12 +13,12 @@
     "serve": "npx serve@latest out"
   },
   "dependencies": {
-    "@next/env": "^15.4.5",
-    "axios": "^1.11.0",
-    "dotenv": "^17.2.1",
-    "next": "^15.3.3",
-    "react": "19.1.1",
-    "react-dom": "19.1.1"
+    "@next/env": "^15.5.4",
+    "axios": "^1.12.2",
+    "dotenv": "^17.2.3",
+    "next": "^15.5.4",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
   "@babel/core": "^7.28.0",
@@ -34,7 +34,7 @@
     "@testing-library/jest-dom": "^6.6.4",
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^30.0.0",
-    "@types/react": "19.1.9",
+    "@types/react": "19.2.0",
     "autoprefixer": "^10.4.21",
     "convert-source-map": "^2.0.0",
     "eslint": "^9",
