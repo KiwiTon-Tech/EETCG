@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { trackFormStart, trackFormSubmission, trackServiceInterest, trackEmailClick } from '../../utils/analytics';
 
 export default function ContactPage() {
   const router = useRouter();
@@ -17,9 +18,22 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [formStarted, setFormStarted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+    
+    // Track form start on first input
+    if (!formStarted) {
+      trackFormStart('contact_form');
+      setFormStarted(true);
+    }
+    
+    // Track service selection
+    if (name === 'service' && value) {
+      trackServiceInterest(value, 'form_selection');
+    }
+    
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -32,6 +46,9 @@ export default function ContactPage() {
     setSubmitError('');
 
     try {
+      // Track form submission
+      trackFormSubmission('contact_form', formData.service || 'general');
+      
       // In a real implementation, you would send this data to your backend or email service
       // For now, we'll simulate a successful submission after a delay
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -46,6 +63,7 @@ export default function ContactPage() {
         message: '',
         service: '',
       });
+      setFormStarted(false);
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitError('There was an error submitting your message. Please try again.');
@@ -228,7 +246,11 @@ export default function ContactPage() {
                   </svg>
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <a href="mailto:info@eliteenterprisetcg.com" className="text-[color:var(--color-navy)] hover:text-[color:var(--color-gold)]">
+                    <a 
+                      href="mailto:info@eliteenterprisetcg.com" 
+                      className="text-[color:var(--color-navy)] hover:text-[color:var(--color-gold)]"
+                      onClick={() => trackEmailClick('info@eliteenterprisetcg.com', 'contact_page')}
+                    >
                       info@eliteenterprisetcg.com
                     </a>
                   </div>

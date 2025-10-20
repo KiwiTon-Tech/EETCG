@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { trackButtonClick, trackCTAClick, trackEngagement } from '../../utils/analytics';
 
 // Consultant data
 const consultants = [
@@ -184,7 +185,11 @@ const ConsultantCard = ({ consultant }: { consultant: typeof consultants[0] }) =
             ))}
           </div>
         </div>
-        <Link href={`/consultants/${consultant.id}`} className="inline-block px-4 py-2 text-white rounded bg-[color:var(--color-navy)] hover:bg-opacity-90">
+        <Link 
+          href={`/consultants/${consultant.id}`} 
+          className="inline-block px-4 py-2 text-white rounded bg-[color:var(--color-navy)] hover:bg-opacity-90"
+          onClick={() => trackButtonClick(`View Profile - ${consultant.name}`, 'consultants_page')}
+        >
           View Profile
         </Link>
       </div>
@@ -207,7 +212,10 @@ const SpecialtyFilter = ({
       <h3 className="mb-4 text-lg font-semibold">Filter by Specialty:</h3>
       <div className="flex flex-wrap gap-2">
         <button
-          onClick={() => setSelectedSpecialty('')}
+          onClick={() => {
+            setSelectedSpecialty('');
+            trackEngagement('filter_specialty', { specialty: 'all', location: 'consultants_page' });
+          }}
           className={`px-4 py-2 text-sm rounded-full transition-colors ${
             selectedSpecialty === '' 
               ? 'bg-[color:var(--color-navy)] text-white' 
@@ -219,7 +227,10 @@ const SpecialtyFilter = ({
         {specialties.map((specialty) => (
           <button
             key={specialty}
-            onClick={() => setSelectedSpecialty(specialty)}
+            onClick={() => {
+              setSelectedSpecialty(specialty);
+              trackEngagement('filter_specialty', { specialty: specialty, location: 'consultants_page' });
+            }}
             className={`px-4 py-2 text-sm rounded-full transition-colors ${
               selectedSpecialty === specialty 
                 ? 'bg-[color:var(--color-navy)] text-white' 
@@ -298,7 +309,11 @@ export default function Consultants() {
           <p className="max-w-2xl mx-auto mb-8 text-xl">
             Contact us today to discuss how our consultants can help transform your business and drive sustainable growth.
           </p>
-          <Link href="/contact" className="btn bg-gold text-navy hover:bg-opacity-90">
+          <Link 
+            href="/contact" 
+            className="btn bg-gold text-navy hover:bg-opacity-90"
+            onClick={() => trackCTAClick('Schedule Consultation - Consultants Page', '/contact')}
+          >
             Schedule a Consultation
           </Link>
         </div>
