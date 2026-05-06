@@ -12,8 +12,11 @@ export const Footer = () => {
           {/* Company Info */}
           <div>
             <h3 className="mb-4 text-xl font-bold text-[color:var(--color-gold)]">Elite Enterprise Transformation</h3>
-            <p className="mb-4">
-              A woman and minority owned consulting firm specializing in transformative business solutions.
+            <p className="mb-2">
+              Project &amp; program management firm delivering PMO and transformation services across federal, state, and enterprise engagements.
+            </p>
+            <p className="mb-4 text-sm text-gray-300">
+              Woman- &amp; minority-owned · Augusta, GA · Local to SRNL
             </p>
             <p className="text-sm">
               &copy; {currentYear} Elite Enterprise Transformation Consulting Group. All rights reserved.
@@ -40,6 +43,9 @@ export const Footer = () => {
                 <Link href="/consultants" className="hover:text-[color:var(--color-gold)]">Our Consultants</Link>
               </li>
               <li>
+                <Link href="/partnerships" className="hover:text-[color:var(--color-gold)]">Partnerships</Link>
+              </li>
+              <li>
                 <Link href="/contact" className="hover:text-[color:var(--color-gold)]">Contact Us</Link>
               </li>
             </ul>
@@ -57,6 +63,9 @@ export const Footer = () => {
               </li>
               <li>
                 <Link href="/services/program-management" className="hover:text-[color:var(--color-gold)]">Program Management</Link>
+              </li>
+              <li>
+                <Link href="/partnerships" className="hover:text-[color:var(--color-gold)]">PMO-as-a-Service</Link>
               </li>
             </ul>
           </div>

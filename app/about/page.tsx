@@ -11,7 +11,9 @@ export default function About() {
         <div className="container px-4 mx-auto text-center">
           <h1 className="mb-4 text-4xl font-bold md:text-5xl">About Us</h1>
           <p className="max-w-2xl mx-auto text-xl">
-            A woman and minority owned consulting firm dedicated to transforming businesses through expert guidance and innovative solutions.
+            A woman- and minority-owned project and program management firm based in
+            Augusta, GA — local to SRNL — delivering PMO and transformation services
+            across federal, state, and enterprise engagements.
           </p>
         </div>
       </section>
@@ -63,13 +65,27 @@ export default function About() {
             <h2 className="mb-8 text-3xl font-bold text-center">Our Story</h2>
             <div className="p-8 bg-white rounded-lg shadow-md">
               <p className="mb-4 text-gray-600">
-                Elite Enterprise Transformation Consulting Group was founded in Beech Island with a vision to bring world-class consulting services to organizations seeking transformative change. As a woman and minority owned business, we bring a unique perspective and diverse approach to solving complex business challenges.
+                Elite Enterprise Transformation Consulting Group (EETCG) was founded in
+                Beech Island, just outside Augusta, GA, to bring rigorous project and
+                program management to organizations facing real governance, compliance,
+                and delivery pressure. As a woman- and minority-owned business local to
+                the Savannah River National Laboratory, we sit at the intersection of
+                federal, state, and enterprise delivery work.
               </p>
               <p className="mb-4 text-gray-600">
-                Our founder recognized a gap in the consulting industry: the need for a firm that combines deep technical expertise with a genuine understanding of the human elements that drive organizational success. This insight led to the creation of EETCG, a firm dedicated to delivering holistic transformation solutions.
+                Our practice is led by <span className="font-semibold">Carla Monroe, PMP</span> —
+                a Director with 20+ years across DOE National Laboratories, the State of
+                New Mexico (MMISR modernization), and Santa Fe Public Schools. Carla
+                served as a Senior Contractor Assurance Specialist at SRNL (Q clearance
+                at the time) and holds CSM, CSPO, ITIL, Six Sigma Black Belt, and Prosci
+                change management credentials.
               </p>
               <p className="text-gray-600">
-                Today, we serve clients across industries, helping them navigate change, optimize operations, and achieve sustainable growth. Our team of expert consultants brings decades of combined experience and a passion for excellence to every engagement.
+                Today, EETCG operates as both a direct delivery firm and as part of an
+                integrated PMO-as-a-Service partnership with IT Connect, Inc. and
+                Holloway Consulting Group — bringing federal clearances, proven artifacts,
+                and a 10+ person bench of project managers, business analysts, change
+                leads, and engineers to every engagement.
               </p>
             </div>
           </div>

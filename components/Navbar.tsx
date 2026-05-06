@@ -64,6 +64,9 @@ export const Navbar = () => {
           <Link href="/consultants" className="font-medium hover:text-[color:var(--color-gold)]">
             Consultants
           </Link>
+          <Link href="/partnerships" className="font-medium hover:text-[color:var(--color-gold)]">
+            Partnerships
+          </Link>
           <Link href="/contact" className="font-medium hover:text-[color:var(--color-gold)]">
             Contact
           </Link>
@@ -107,6 +110,13 @@ export const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Consultants
+              </Link>
+              <Link
+                href="/partnerships"
+                className="font-medium hover:text-[color:var(--color-gold)]"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Partnerships
               </Link>
               <Link
                 href="/contact"
