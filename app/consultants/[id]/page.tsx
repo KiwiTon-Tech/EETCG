@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { ConsultantViewTracker } from '../../../components/ConsultantViewTracker';
+import { ConsultantCTA } from '../../../components/ConsultantCTA';
 
 // Consultant data - same as in the main consultants page
 const consultants = [
@@ -269,6 +271,7 @@ export default async function ConsultantProfile({ params }: ConsultantPageProps)
 
   return (
     <>
+      <ConsultantViewTracker consultantName={consultant.name} consultantId={consultant.id} />
       {/* Page Header */}
       <section className="pt-32 pb-16 text-white bg-navy">
         <div className="container px-4 mx-auto">
@@ -369,22 +372,7 @@ export default async function ConsultantProfile({ params }: ConsultantPageProps)
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-light-gray">
-        <div className="container px-4 mx-auto text-center">
-          <h2 className="mb-4 text-3xl font-bold">Work With {consultant.name.split(' ')[0]}</h2>
-          <p className="max-w-2xl mx-auto mb-8 text-xl text-gray-600">
-            Interested in working with {consultant.name.split(' ')[0]} on your next project? Contact us today to schedule a consultation.
-          </p>
-          <div className="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-y-0 md:space-x-4">
-            <Link href="/contact" className="btn bg-[color:var(--color-navy)] text-white hover:bg-opacity-90">
-              Schedule a Consultation
-            </Link>
-            <Link href="/consultants" className="btn bg-transparent border-2 border-[color:var(--color-navy)] text-[color:var(--color-navy)] hover:bg-[color:var(--color-navy)] hover:text-white">
-              View All Consultants
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ConsultantCTA consultantName={consultant.name} consultantId={consultant.id} />
     </>
   );
 }

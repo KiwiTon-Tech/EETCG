@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { trackCTAClick, trackServiceInterest } from '../utils/analytics';
 
 // Service card component
 const ServiceCard = ({ title, description, icon }: { title: string; description: string; icon: React.ReactNode }) => (
@@ -11,7 +12,11 @@ const ServiceCard = ({ title, description, icon }: { title: string; description:
     </div>
     <h3 className="mb-2 text-xl font-bold">{title}</h3>
     <p className="mb-4 text-gray-600">{description}</p>
-    <Link href={`/services#${title.toLowerCase().replace(/\s+/g, '-')}`} className="text-[color:var(--color-teal)] hover:text-[color:var(--color-navy)]">
+    <Link 
+      href={`/services#${title.toLowerCase().replace(/\s+/g, '-')}`} 
+      className="text-[color:var(--color-teal)] hover:text-[color:var(--color-navy)]"
+      onClick={() => trackServiceInterest(title, 'service_card_click')}
+    >
       Learn more &rarr;
     </Link>
   </div>
@@ -101,10 +106,18 @@ export default function Home() {
             Professional consulting services to elevate your business strategy, operations, and technology.
           </p>
           <div className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-4 md:justify-center">
-            <Link href="/contact" className="btn btn-primary">
+            <Link 
+              href="/contact" 
+              className="btn btn-primary"
+              onClick={() => trackCTAClick('Schedule Consultation - Hero', '/contact')}
+            >
               Schedule a Consultation
             </Link>
-            <Link href="/services" className="btn btn-outline bg-transparent text-white border-white">
+            <Link 
+              href="/services" 
+              className="btn btn-outline bg-transparent text-white border-white"
+              onClick={() => trackCTAClick('Explore Services - Hero', '/services')}
+            >
               Explore Our Services
             </Link>
           </div>
@@ -172,7 +185,11 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <Link href="/services" className="btn btn-primary">
+            <Link 
+              href="/services" 
+              className="btn btn-primary"
+              onClick={() => trackCTAClick('View All Services', '/services')}
+            >
               View All Services
             </Link>
           </div>
@@ -209,7 +226,11 @@ export default function Home() {
           <p className="max-w-2xl mx-auto mb-8 text-xl">
             Schedule a consultation with our expert team to discuss how we can help you achieve your business goals.
           </p>
-          <Link href="/contact" className="btn bg-[color:var(--color-gold)] text-[color:var(--color-navy)] hover:bg-opacity-90">
+          <Link 
+            href="/contact" 
+            className="btn bg-[color:var(--color-gold)] text-[color:var(--color-navy)] hover:bg-opacity-90"
+            onClick={() => trackCTAClick('Get Started Today - Bottom CTA', '/contact')}
+          >
             Get Started Today
           </Link>
         </div>

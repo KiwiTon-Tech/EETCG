@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
+import { GoogleAnalytics } from '../components/GoogleAnalytics';
 import { fontClasses } from './services/fonts';
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en" className={fontClasses}>
       {/* Using system fonts defined in globals.css */}
       <body>
+        <GoogleAnalytics />
         <Navbar />
         <main>{children}</main>
         <Footer />
