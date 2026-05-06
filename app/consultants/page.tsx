@@ -160,14 +160,14 @@ With a robust background at organizations like WhirlWind Technologies and the De
 const ConsultantCard = ({ consultant }: { consultant: typeof consultants[0] }) => {
   return (
     <div className="overflow-hidden bg-white rounded-lg shadow-lg">
-      <div className="relative w-full h-64">
+      <div className="relative w-full aspect-[3/4] bg-gray-100">
         {/* Actual image from public directory */}
-        <Image 
+        <Image
           src={consultant.image}
           alt={`${consultant.name} - ${consultant.title}`}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover"
+          className="object-cover object-top"
           priority
         />
       </div>

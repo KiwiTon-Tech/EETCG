@@ -2,33 +2,31 @@
 
 ## Project Overview
 
-This repository contains the source code for the Elite Enterprise Transformation Consulting Group website (https://eliteenterprisetcg.com/), built using Next.js 15.4.6 with static export for Cloudflare Pages deployment. The website is designed to project a professional, modern, and client-focused image for a woman and minority owned consulting firm specializing in Project Management, Program Management, Strategic Planning, Data & Analytics, Vendor Management, and AI Consulting.
+This repository contains the source code for the Elite Enterprise Transformation Consulting Group website (https://eliteenterprisetcg.com/), built using Next.js 16 (App Router, Turbopack) and deployed to Cloudflare via the OpenNext Cloudflare adapter. The website is designed to project a professional, modern, and client-focused image for a woman and minority owned consulting firm specializing in Project Management, Program Management, Strategic Planning, Data & Analytics, Vendor Management, and AI Consulting.
 
-## Build Status
+## Tech Stack
 
-**RESOLVED**: Static export build issues have been successfully resolved. The application now builds and deploys without errors.
+- **Framework**: Next.js 16.2.x (App Router, Turbopack)
+- **Runtime**: Node.js >= 24 (see `.nvmrc` and `package.json` `engines`)
+- **UI**: React 19, Tailwind CSS v4
+- **Deployment**: Cloudflare (Workers/Pages) via `@opennextjs/cloudflare`
+- **Static export**: `output: "export"` enabled in `next.config.js`
 
-### Key Fixes Applied:
-- **Removed Edge Runtime**: Eliminated `export const runtime = 'edge';` from dynamic route layouts (incompatible with static export)
-- **Fixed Dynamic Routes**: Converted `/consultants/[id]` to server component with proper `generateStaticParams()` implementation
-- **Corrected TypeScript Types**: Updated params handling for Next.js 15 async params (`Promise<{ id: string }>`)
-- **Static Export Ready**: All 22 pages (including 11+ consultant profiles) now generate successfully
+### Build Output
 
-### Build Results:
+All 21 routes (including 11 consultant profiles) prerender successfully:
+
 ```
-✓ Compiled successfully
-✓ Linting and checking validity of types
-✓ Collecting page data
-✓ Generating static pages (22/22)
-✓ Exporting (3/3)
-✓ Finalizing page optimization
-
-Route (app)                                 Size  First Load JS
-├ ● /consultants/[id]                      174 B         108 kB
-├   ├ /consultants/carla
-├   ├ /consultants/jessica  
-├   ├ /consultants/zander
-├   └ [+8 more paths]
+Route (app)
+├ ○ /
+├ ○ /about
+├ ○ /consultants
+├ ● /consultants/[id]   (carla, jessica, zander, +8 more)
+├ ○ /contact
+├ ○ /services
+├ ○ /services/program-management
+├ ○ /services/project-management
+└ ○ /services/strategic-planning
 
 ○  (Static)  prerendered as static content
 ●  (SSG)     prerendered as static HTML (uses generateStaticParams)
@@ -58,10 +56,11 @@ Route (app)                                 Size  First Load JS
 ├── components/               # Reusable React components
 │   ├── Footer.tsx            # Site footer component
 │   └── Navbar.tsx            # Navigation bar component
-├── consultants/              # Consultant markdown content
-│   ├── about-carla.md        # Carla's bio content
-│   ├── about-jessica.md      # Jessica's bio content
-│   └── about-zander.md       # Zander's bio content
+├── consultants/              # Consultant markdown bio content (source material)
+│   ├── about-carla.md
+│   ├── about-jessica.md
+│   ├── about-zander.md
+│   └── about *.md            # 8 additional consultant bios
 ├── public/                   # Static assets
 │   └── images/               # Image assets
 │       └── consultants/      # Consultant profile images
@@ -70,9 +69,13 @@ Route (app)                                 Size  First Load JS
 ├── next-env.d.ts             # TypeScript declarations for Next.js
 ├── package.json              # Project dependencies and scripts
 ├── package-lock.json         # Dependency lock file
-├── postcss.config.js         # PostCSS configuration
-├── tailwind.config.js        # Tailwind CSS configuration
+├── postcss.config.mjs        # PostCSS configuration
+├── tailwind.config.js        # Tailwind CSS configuration (ESM)
+├── next.config.js            # Next.js configuration
+├── open-next.config.ts       # OpenNext (Cloudflare) configuration
 ├── wrangler.toml             # Cloudflare Workers configuration
+├── eslint.config.mjs         # Flat-config ESLint setup
+├── .nvmrc                    # Pinned Node 24
 └── tsconfig.json             # TypeScript configuration
 ```
 
@@ -114,9 +117,8 @@ Route (app)                                 Size  First Load JS
 
 ### Home:
 - Hero section with a bold tagline and CTA.
-- Highlights section showcasing stats (e.g., 100+ Completed Projects, 99+ Satisfied Clients, 25+ Team Members).
 - Brief overview of services with icons and short descriptions.
-- Testimonials slider for client feedback.
+- Final CTA section linking to the contact page.
 
 ### About:
 - Company mission, vision, and values.
@@ -141,12 +143,13 @@ Route (app)                                 Size  First Load JS
 ## Technical Requirements
 
 ### Framework
-- **Next.js**: Use Next.js 15.4.6 for server-side rendering, static site generation, and API routes.
-- **React**: Leverage React components for reusable UI elements (e.g., ConsultantCard, ServiceCard).
+- **Next.js**: 16.2.x with the App Router and Turbopack dev server, configured for static export (`output: "export"`).
+- **React**: 19.x — leverages reusable UI components (e.g., `ConsultantCard`, `ServiceCard`).
+- **Node**: 24+ required (enforced via `engines` and `.nvmrc`).
 
 ### Font Configuration
-- **Google Fonts**: Using Next.js 15 font system with Montserrat and Open Sans.
-- **Implementation**: Fonts are configured in `app/services/fonts.js` and applied using the `.className` property (not `.variable` which is deprecated in Next.js 15).
+- **Google Fonts**: Using `next/font/google` with Montserrat and Open Sans.
+- **Implementation**: Fonts are configured in `app/services/fonts.js` and applied using the `.className` property.
 - **Usage Example**:
   ```javascript
   // In app/services/fonts.js
@@ -209,69 +212,62 @@ Route (app)                                 Size  First Load JS
 
 ## Deployment
 
-This website is deployed using Cloudflare Pages with the OpenNext v3+ adapter for Next.js applications. The deployment process has been optimized for reliability and uses both automated CI/CD and manual deployment options.
+The site is deployed to Cloudflare via the **OpenNext Cloudflare adapter** (`@opennextjs/cloudflare`).
 
 ### Deployment Configuration
 
-The project uses OpenNext v3+ with the dedicated Cloudflare adapter:
-
-- **Main configuration file**: `cloudflare.config.js` (using `@opennextjs/cloudflare`)
-- **Build output directory**: `.open-next` (containing worker.js and assets)
-- **Wrangler configuration**: `pages_build_output_dir = ".open-next"` in wrangler.toml
+- **Adapter**: `@opennextjs/cloudflare`
+- **OpenNext config**: `open-next.config.ts`
+- **Build output directory**: `.open-next` (`worker.js` + assets)
+- **Wrangler configuration**: `wrangler.toml` (`pages_build_output_dir = ".open-next"`)
+- **Node runtime**: Node 24 in CI (`.github/workflows/deploy.yml`)
 
 ### Automated Deployment (Recommended)
 
-The project uses GitHub Actions for automated deployment:
+GitHub Actions handles deployment on push to `main`:
 
-1. **Push to main branch** - Triggers automatic deployment
-2. **GitHub Actions workflow** runs the following steps:
-   - Install dependencies with `npm ci`
-   - Run linting checks
-   - Build with OpenNext using `npm run opennext:build`
+1. Checkout repo
+2. Setup Node 24 (`actions/setup-node@v4`)
+3. `npm install`
+4. `npm run lint`
+5. `npm run deploy` (runs `opennextjs-cloudflare build && opennextjs-cloudflare deploy`)
 
 ### Manual Deployment
 
-For local testing and manual deployment:
-
 ```bash
-# Install dependencies
+# Install dependencies (requires Node 24+)
 npm install
 
-# Build with OpenNext
-npm run opennext:build
+# Build + preview locally with Wrangler
+npm run preview
 
-# Preview locally (requires Wrangler CLI)
-npm run opennext:preview
-
-# Deploy to production
-npm run opennext:deploy
+# Build + deploy to production
+npm run deploy
 ```
 
-### Cloudflare Pages Build Configuration
+### Cloudflare Build Configuration
 
-The following build settings should be configured in Cloudflare Pages:
+If configuring through the Cloudflare dashboard rather than GitHub Actions:
 
-- **Build command:** `npm run opennext:build`
-- **Build output directory:** `.open-next`
-- **Root directory:** `/`
-
-### Key Deployment Features
-
-- **Pure OpenNext approach** - Using the dedicated Cloudflare adapter
-- **Optimized configuration** - Properly configured wrangler.toml and cloudflare.config.js
-- **Next.js output** - Configured with `output: "standalone"` for serverless deployment
-- **Static asset optimization** - Automatic handling of static assets in the public directory
+- **Build command**: `npm run deploy`
+- **Build output directory**: `.open-next`
+- **Root directory**: `/`
 
 ## Development Setup
 
+### Prerequisites
+- **Node.js 24+** (use `nvm use` to pick up `.nvmrc`)
+- **npm 10+**
+
 ### Install Dependencies:
 ```bash
+nvm use        # picks up .nvmrc (Node 24)
 npm install
 ```
 
 ### Run Development Server:
 ```bash
-npm run dev
+npm run dev    # Next.js 16 with Turbopack on http://localhost:3000
 ```
 
 ### Build for Production:
@@ -279,6 +275,18 @@ npm run dev
 npm run build
 npm run start
 ```
+
+### Available Scripts
+
+| Script | Purpose |
+| ------ | ------- |
+| `npm run dev`     | Start the Next.js dev server (Turbopack) |
+| `npm run build`   | Production Next.js build |
+| `npm run start`   | Serve the production build |
+| `npm run lint`    | Run ESLint |
+| `npm run preview` | OpenNext build + local Cloudflare Worker preview |
+| `npm run deploy`  | OpenNext build + deploy to Cloudflare |
+| `npm run serve`   | Serve the static `out/` directory |
 
 ## Future Enhancements
 - Add a blog section for thought leadership content.
