@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 
 // Service card component
 const ServiceCard = ({ title, description, icon }: { title: string; description: string; icon: React.ReactNode }) => (
@@ -14,24 +13,6 @@ const ServiceCard = ({ title, description, icon }: { title: string; description:
     <Link href={`/services#${title.toLowerCase().replace(/\s+/g, '-')}`} className="text-[color:var(--color-teal)] hover:text-[color:var(--color-navy)]">
       Learn more &rarr;
     </Link>
-  </div>
-);
-
-// Testimonial card component
-const TestimonialCard = ({ quote, author, position, company }: { quote: string; author: string; position: string; company: string }) => (
-  <div className="p-6 bg-white rounded-lg shadow-md">
-    <div className="mb-4 text-[color:var(--color-gold)]">
-      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-      </svg>
-    </div>
-    <p className="mb-4 italic text-gray-600">{quote}</p>
-    <div>
-      <p className="font-bold">{author}</p>
-      <p className="text-sm text-gray-500">
-        {position}, {company}
-      </p>
-    </div>
   </div>
 );
 
@@ -67,28 +48,6 @@ export default function Home() {
     },
   ];
 
-  // Testimonials data
-  const testimonials = [
-    {
-      quote: "Elite Enterprise Transformation Consulting Group's strategic planning services helped us pivot our business model during challenging times. Their insights were invaluable.",
-      author: "Sarah Johnson",
-      position: "CEO",
-      company: "TechInnovate Inc."
-    },
-    {
-      quote: "The project management expertise provided by EETCG ensured our product launch was smooth and successful. They exceeded our expectations at every turn.",
-      author: "Michael Chen",
-      position: "COO",
-      company: "Global Solutions Ltd."
-    },
-    {
-      quote: "Working with EETCG on our data analytics initiative transformed how we make decisions. Their team's knowledge and professionalism are unmatched.",
-      author: "Priya Patel",
-      position: "CIO",
-      company: "DataDrive Systems"
-    }
-  ];
-
   return (
     <>
       {/* Hero Section */}
@@ -107,47 +66,6 @@ export default function Home() {
             <Link href="/services" className="btn btn-outline bg-transparent text-white border-white">
               Explore Our Services
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Highlights Section */}
-      <section className="py-16 bg-[color:var(--color-light-gray)]">
-        <div className="container px-4 mx-auto">
-          <h2 className="mb-12 text-3xl font-bold text-center md:text-4xl">Our Impact</h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {/* Completed Projects */}
-            <div className="p-6 text-center bg-white rounded-lg shadow-md">
-              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-white rounded-full bg-[color:var(--color-navy)]">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="mb-2 text-4xl font-bold text-[color:var(--color-gold)]">100+</h3>
-              <p className="text-gray-600">Completed Projects</p>
-            </div>
-
-            {/* Satisfied Clients */}
-            <div className="p-6 text-center bg-white rounded-lg shadow-md">
-              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-white rounded-full bg-[color:var(--color-navy)]">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-                </svg>
-              </div>
-              <h3 className="mb-2 text-4xl font-bold text-[color:var(--color-gold)]">99+</h3>
-              <p className="text-gray-600">Satisfied Clients</p>
-            </div>
-
-            {/* Team Members */}
-            <div className="p-6 text-center bg-white rounded-lg shadow-md">
-              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-white rounded-full bg-[color:var(--color-navy)]">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <h3 className="mb-2 text-4xl font-bold text-[color:var(--color-gold)]">25+</h3>
-              <p className="text-gray-600">Team Members</p>
-            </div>
           </div>
         </div>
       </section>
@@ -175,29 +93,6 @@ export default function Home() {
             <Link href="/services" className="btn btn-primary">
               View All Services
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-16 bg-[color:var(--color-light-gray)]">
-        <div className="container px-4 mx-auto">
-          <div className="max-w-3xl mx-auto mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Client Testimonials</h2>
-            <p className="text-gray-600">
-              Don't just take our word for it. Here's what our clients have to say about working with us.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard
-                key={index}
-                quote={testimonial.quote}
-                author={testimonial.author}
-                position={testimonial.position}
-                company={testimonial.company}
-              />
-            ))}
           </div>
         </div>
       </section>
