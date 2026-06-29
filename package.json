@@ -14,7 +14,9 @@
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "serve": "npx serve@latest out",
-    "lighthouse": "npm run build && lhci autorun"
+    "lighthouse": "npm run build && lhci autorun --config=lighthouserc.desktop.json && lhci autorun --config=lighthouserc.mobile.json",
+    "lighthouse:desktop": "npm run build && lhci autorun --config=lighthouserc.desktop.json",
+    "lighthouse:mobile": "npm run build && lhci autorun --config=lighthouserc.mobile.json"
   },
   "dependencies": {
     "@next/env": "^15.4.5",
