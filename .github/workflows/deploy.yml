@@ -24,6 +24,9 @@ jobs:
       - name: Run linting
         run: npm run lint
 
+      - name: Run tests
+        run: npm test
+
       - name: Build and Deploy to Cloudflare Pages
         run: npm run deploy
         env:
