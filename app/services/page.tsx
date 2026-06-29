@@ -1,7 +1,10 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'Our Services | Elite Enterprise Transformation Consulting Group',
+  description: 'PMO-as-a-Service, Project Management, Program Management, Strategic Planning, Data & Analytics, Vendor Management, and AI Consulting for federal, state, and enterprise clients.',
+};
 
 export default function Services() {
   return (
@@ -25,6 +28,52 @@ export default function Services() {
               At Elite Enterprise Transformation Consulting Group, we offer a range of specialized services 
               designed to address your most complex business challenges and unlock new opportunities for growth.
             </p>
+          </div>
+
+          {/* Featured: PMO-as-a-Service */}
+          <div className="mb-10">
+            <Link
+              href="/partnerships"
+              className="block overflow-hidden transition-shadow rounded-lg shadow-md hover:shadow-xl"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-3">
+                <div className="p-8 text-white lg:col-span-1 bg-[color:var(--color-navy)]">
+                  <p className="mb-2 text-xs font-bold tracking-wider text-[color:var(--color-gold)]">
+                    FEATURED OFFERING
+                  </p>
+                  <h3 className="mb-3 text-2xl font-bold">PMO-as-a-Service</h3>
+                  <p className="text-sm text-gray-200">
+                    Stand up a real PMO in weeks, not months. Delivered through our
+                    three-firm partnership with IT Connect, Inc. and Holloway Consulting Group.
+                  </p>
+                </div>
+                <div className="p-8 bg-white lg:col-span-2">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                    <div>
+                      <h4 className="mb-1 font-bold">Day-One Artifacts</h4>
+                      <p className="text-sm text-gray-600">
+                        Charters, RAID logs, integrated schedules, change-control, executive dashboards.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="mb-1 font-bold">Cleared Bench</h4>
+                      <p className="text-sm text-gray-600">
+                        Active and prior TS, Q, and Public Trust clearances on team.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="mb-1 font-bold">Flexible Posture</h4>
+                      <p className="text-sm text-gray-600">
+                        Direct, through BSRA, or as a sub to an existing prime. 8(a), GSA, PSFA.
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm font-semibold text-[color:var(--color-navy)]">
+                    Learn more about the partnership &rarr;
+                  </p>
+                </div>
+              </div>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

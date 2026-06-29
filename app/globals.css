@@ -258,7 +258,8 @@
   }
   
   .btn-primary:focus {
-    @apply ring-blue-500;
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
   }
   
   /* Secondary button - Gold background */
@@ -275,7 +276,8 @@
   }
   
   .btn-secondary:focus {
-    @apply ring-yellow-500;
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
   }
   
   /* Outline button - Transparent with navy border */
@@ -293,7 +295,8 @@
   }
   
   .btn-outline:focus {
-    @apply ring-blue-500;
+    outline: 2px solid var(--color-navy);
+    outline-offset: 2px;
   }
   
   /* Teal button */
@@ -310,7 +313,8 @@
   }
   
   .btn-teal:focus {
-    @apply ring-teal-500;
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
   }
   
   /* Ghost button - Minimal styling */
@@ -329,7 +333,8 @@
   }
   
   .btn-ghost:focus {
-    @apply ring-gray-500;
+    outline: 2px solid var(--color-navy);
+    outline-offset: 2px;
   }
   
   /* Button sizes */

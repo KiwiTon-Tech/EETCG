@@ -251,6 +251,16 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const consultant = consultants.find(c => c.id === id);
+  if (!consultant) return {};
+  return {
+    title: `${consultant.name} | Elite Enterprise Transformation Consulting Group`,
+    description: consultant.shortBio,
+  };
+}
+
 interface ConsultantPageProps {
   params: Promise<{ id: string }>;
 }
@@ -291,7 +301,15 @@ export default async function ConsultantProfile({ params }: ConsultantPageProps)
             {/* Profile Info */}
             <div>
               <h1 className="mb-2 text-3xl font-bold md:text-4xl">{consultant.name}</h1>
-              <p className="mb-4 text-xl font-semibold text-[color:var(--color-gold)]">{consultant.title}</p>
+              <p className="mb-2 text-xl font-semibold text-[color:var(--color-gold)]">{consultant.title}</p>
+              {consultant.firm && (
+                <p className="mb-2 text-sm font-semibold tracking-wider text-gray-300 uppercase">{consultant.firm}</p>
+              )}
+              {consultant.clearance && (
+                <p className="inline-block px-3 py-1 mb-4 text-sm font-semibold rounded bg-[color:var(--color-gold)] text-[color:var(--color-navy)]">
+                  {consultant.clearance}
+                </p>
+              )}
               <div className="flex flex-wrap gap-2">
                 {consultant.specialties.map((specialty, index) => (
                   <span key={index} className="px-3 py-1 text-sm bg-white rounded-full text-[color:var(--color-navy)]">

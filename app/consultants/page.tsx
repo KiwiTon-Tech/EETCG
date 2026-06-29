@@ -157,7 +157,7 @@ With a robust background at organizations like WhirlWind Technologies and the De
 ];
 
 // Consultant card component
-const ConsultantCard = ({ consultant }: { consultant: typeof consultants[0] }) => {
+const ConsultantCard = ({ consultant }: { consultant: Consultant }) => {
   return (
     <div className="overflow-hidden bg-white rounded-lg shadow-lg">
       <div className="relative w-full aspect-[3/4] bg-gray-100">
@@ -168,12 +168,28 @@ const ConsultantCard = ({ consultant }: { consultant: typeof consultants[0] }) =
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover object-top"
-          priority
         />
       </div>
       <div className="p-6">
         <h3 className="mb-2 text-xl font-bold">{consultant.name}</h3>
         <p className="mb-1 text-sm font-semibold text-[color:var(--color-navy)]">{consultant.title}</p>
+        {consultant.firm && (
+          <p className="mb-2 text-xs font-semibold tracking-wider text-gray-500 uppercase">{consultant.firm}</p>
+        )}
+        {(consultant.clearance || (consultant.certifications && consultant.certifications.length > 0)) && (
+          <div className="flex flex-wrap gap-1 mb-3">
+            {consultant.clearance && (
+              <span className="px-2 py-0.5 text-xs font-semibold rounded bg-[color:var(--color-gold)] text-[color:var(--color-navy)]">
+                {consultant.clearance}
+              </span>
+            )}
+            {consultant.certifications?.map((cert) => (
+              <span key={cert} className="px-2 py-0.5 text-xs rounded bg-gray-100 text-gray-700 border border-gray-200">
+                {cert}
+              </span>
+            ))}
+          </div>
+        )}
         <p className="mb-4 text-gray-600">{consultant.shortBio}</p>
         <div className="mb-4">
           <h4 className="mb-2 text-sm font-semibold">Specialties:</h4>

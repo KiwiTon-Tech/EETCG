@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<rect width="512" height="512" fill="white"/>
+<g transform="translate(256,180)">
+<polygon points="95.3,-55.0 95.3,55.0 60.6,35.0 60.6,-35.0" fill="#0F2744"/>
+<polygon points="95.3,55.0 0.0,110.0 0.0,70.0 60.6,35.0" fill="#6B7C93"/>
+<polygon points="0.0,110.0 -95.3,55.0 -60.6,35.0 0.0,70.0" fill="#0F2744"/>
+<polygon points="-95.3,55.0 -95.3,-55.0 -60.6,-35.0 -60.6,35.0" fill="#6B7C93"/>
+<polygon points="-95.3,-55.0 -0.0,-110.0 -0.0,-70.0 -60.6,-35.0" fill="#0F2744"/>
+<polygon points="-0.0,-110.0 95.3,-55.0 60.6,-35.0 -0.0,-70.0" fill="#6B7C93"/>
+</g><text x="256" y="340" font-family="Arial" font-size="54" text-anchor="middle" fill="#0F2744">ELITE</text></svg>

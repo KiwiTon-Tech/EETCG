@@ -11,6 +11,7 @@ This repository contains the source code for the Elite Enterprise Transformation
 - **UI**: React 19, Tailwind CSS v4
 - **Deployment**: Cloudflare (Workers/Pages) via `@opennextjs/cloudflare`
 - **Static export**: `output: "export"` enabled in `next.config.js`
+- **Quality gates**: Lighthouse CI (`@lhci/cli`) in GitHub Actions + ESLint
 
 ### Build Output
 
@@ -53,6 +54,11 @@ Route (app)
 │   ├── globals.css           # Global styles
 │   ├── layout.tsx            # Root layout component
 │   └── page.tsx              # Homepage
+│   ├── contact/
+│   │   ├── layout.tsx        # Server metadata wrapper (client page)
+│   │   └── page.tsx          # Contact form (Formspree) + map
+│   ├── consultants/
+│   │   └── layout.tsx        # Server metadata wrapper (client page)
 ├── components/               # Reusable React components
 │   ├── Footer.tsx            # Site footer component
 │   └── Navbar.tsx            # Navigation bar component
@@ -75,6 +81,9 @@ Route (app)
 ├── open-next.config.ts       # OpenNext (Cloudflare) configuration
 ├── wrangler.toml             # Cloudflare Workers configuration
 ├── eslint.config.mjs         # Flat-config ESLint setup
+├── lighthouserc.json         # Lighthouse CI configuration
+├── docs/                     # Audit notes & deployment docs
+├── public/favicon.ico        # Site favicon (also favicon.png)
 ├── .nvmrc                    # Pinned Node 24
 └── tsconfig.json             # TypeScript configuration
 ```
@@ -207,8 +216,27 @@ Route (app)
 - **SEO**: Use Next.js Metadata API for dynamic meta tags (title, description) on each page.
 
 ## Accessibility
-- Ensure WCAG 2.1 compliance (e.g., alt text for images, keyboard navigation).
-- Use semantic HTML and ARIA labels for screen readers.
+- Targets WCAG 2.1 AA compliance, enforced via Lighthouse CI (accessibility ≥ 0.9 is a hard gate).
+- Skip-to-main-content link in `app/layout.tsx` (WCAG 2.4.1).
+- Active nav state via `usePathname()`; `aria-expanded` / `aria-controls` on the mobile menu toggle.
+- `aria-hidden="true"` on all decorative SVG icons; `aria-pressed` on consultant filter buttons.
+- Brand-colored focus rings (gold/navy/teal) on all button variants.
+- Semantic HTML and ARIA labels for screen readers; alt text on all images.
+
+## Quality & CI
+
+### Lighthouse CI
+
+Automated performance, accessibility, best-practices, and SEO audits run against the static export.
+
+- **Config**: `lighthouserc.json` — audits Home, About, Services, Consultants, Partnerships, Contact (3 runs each, desktop preset).
+- **Assertions**: Accessibility ≥ 0.9 and SEO ≥ 0.9 are **hard failures**; Performance and Best Practices ≥ 0.9 are warnings.
+- **CI**: `.github/workflows/lighthouse.yml` runs on every push/PR to `main`, posting status checks via the `LHCI_GITHUB_APP_TOKEN` repo secret.
+- **Local**: `npm run lighthouse` builds the site and runs the same audit; reports upload to temporary public storage.
+
+### Contact Form
+
+The contact form (`app/contact/page.tsx`) submits to **Formspree** via `fetch`. Update the endpoint URL with your registered Formspree form ID before going live.
 
 ## Deployment
 
@@ -287,6 +315,7 @@ npm run start
 | `npm run preview` | OpenNext build + local Cloudflare Worker preview |
 | `npm run deploy`  | OpenNext build + deploy to Cloudflare |
 | `npm run serve`   | Serve the static `out/` directory |
+| `npm run lighthouse` | Build + run Lighthouse CI audit locally |
 
 ## Future Enhancements
 - Add a blog section for thought leadership content.
