@@ -15,7 +15,6 @@ R2_PUBLIC_URL = "https://pub-d5883a1087a6409384f23475fe808a41.r2.dev" # Update w
 binding = "NEXT_INC_CACHE_R2_BUCKET"
 bucket_name = "eetcg-next-cache"
 preview_bucket_name = "eetcg-next-cache-preview"
-[
-    assets]
+[assets]
 directory = ".open-next/assets"
 binding = "ASSETS"
