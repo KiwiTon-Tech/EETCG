@@ -32,23 +32,17 @@ export default function ContactPage() {
     setSubmitError('');
 
     try {
-      // In a real implementation, you would send this data to your backend or email service
-      // For now, we'll simulate a successful submission after a delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      
-      console.log('Form submitted:', formData);
-      setSubmitSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        message: '',
-        service: '',
+      const response = await fetch('https://formspree.io/f/info@eliteenterprisetcg.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(formData),
       });
+      if (!response.ok) throw new Error('Submission failed');
+      setSubmitSuccess(true);
+      setFormData({ name: '', email: '', phone: '', company: '', message: '', service: '' });
     } catch (error) {
       console.error('Error submitting form:', error);
-      setSubmitError('There was an error submitting your message. Please try again.');
+      setSubmitError('There was an error submitting your message. Please try again or email us directly at info@eliteenterprisetcg.com.');
     } finally {
       setIsSubmitting(false);
     }
@@ -213,11 +207,12 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div className="flex items-start">
                   <svg
-                    className="w-6 h-6 mr-3 text-[color:var(--color-gold)]"
+                    className="w-6 h-6 mr-3 text-[color:var(--color-gold)] shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -235,11 +230,35 @@ export default function ContactPage() {
                 </div>
                 <div className="flex items-start">
                   <svg
-                    className="w-6 h-6 mr-3 text-[color:var(--color-gold)]"
+                    className="w-6 h-6 mr-3 text-[color:var(--color-gold)] shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                  <div>
+                    <h3 className="font-semibold">Phone</h3>
+                    <a href="tel:+15055048240" className="text-[color:var(--color-navy)] hover:text-[color:var(--color-gold)]">
+                      (505) 504-8240
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <svg
+                    className="w-6 h-6 mr-3 text-[color:var(--color-gold)] shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -266,11 +285,12 @@ export default function ContactPage() {
                 </div>
                 <div className="flex items-start">
                   <svg
-                    className="w-6 h-6 mr-3 text-[color:var(--color-gold)]"
+                    className="w-6 h-6 mr-3 text-[color:var(--color-gold)] shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -296,14 +316,14 @@ export default function ContactPage() {
             <div className="p-8 text-white rounded-lg bg-[color:var(--color-navy)]">
               <h3 className="mb-4 text-xl font-bold text-[color:var(--color-gold)]">Schedule a Consultation</h3>
               <p className="mb-6">
-                Ready to take your business to the next level? Schedule a free 30-minute consultation with one of our expert consultants.
+                Ready to take your business to the next level? Fill out the form or call us directly to schedule a free 30-minute consultation.
               </p>
-              <Link 
-                href="/consultants" 
+              <a
+                href="tel:+15055048240"
                 className="inline-block px-6 py-3 font-medium text-[color:var(--color-navy)] transition-colors bg-white rounded-md hover:bg-[color:var(--color-gold)] hover:text-white"
               >
-                Meet Our Consultants
-              </Link>
+                Call (505) 504-8240
+              </a>
             </div>
           </div>
         </div>
@@ -334,11 +354,6 @@ export default function ContactPage() {
             <div className="flex flex-wrap justify-center gap-4 mt-6">
               <div className="px-4 py-2 text-sm bg-gray-100 rounded-full">New Mexico</div>
               <div className="px-4 py-2 text-sm bg-gray-100 rounded-full">Georgia</div>
-              <div className="px-4 py-2 text-sm bg-gray-100 rounded-full">California</div>
-              <div className="px-4 py-2 text-sm bg-gray-100 rounded-full">Texas</div>
-              <div className="px-4 py-2 text-sm bg-gray-100 rounded-full">New York</div>
-              <div className="px-4 py-2 text-sm bg-gray-100 rounded-full">Florida</div>
-              <div className="px-4 py-2 text-sm bg-gray-100 rounded-full">And more...</div>
             </div>
           </div>
         </div>

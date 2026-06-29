@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { consultants, type Consultant } from '@/data/consultants';
 
-
 // Consultant card component
 const ConsultantCard = ({ consultant }: { consultant: Consultant }) => {
   return (
@@ -18,7 +17,6 @@ const ConsultantCard = ({ consultant }: { consultant: Consultant }) => {
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover object-top"
-          priority
         />
       </div>
       <div className="p-6">
@@ -76,6 +74,7 @@ const SpecialtyFilter = ({
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => setSelectedSpecialty('')}
+          aria-pressed={selectedSpecialty === ''}
           className={`px-4 py-2 text-sm rounded-full transition-colors ${
             selectedSpecialty === '' 
               ? 'bg-[color:var(--color-navy)] text-white' 
@@ -88,6 +87,7 @@ const SpecialtyFilter = ({
           <button
             key={specialty}
             onClick={() => setSelectedSpecialty(specialty)}
+            aria-pressed={selectedSpecialty === specialty}
             className={`px-4 py-2 text-sm rounded-full transition-colors ${
               selectedSpecialty === specialty 
                 ? 'bg-[color:var(--color-navy)] text-white' 

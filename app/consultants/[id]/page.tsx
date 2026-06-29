@@ -2,12 +2,23 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { consultants } from '@/data/consultants';
+import type { Metadata } from 'next';
 
 // Generate static params for all consultant IDs
 export async function generateStaticParams() {
   return consultants.map((consultant) => ({
     id: consultant.id,
   }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const consultant = consultants.find(c => c.id === id);
+  if (!consultant) return {};
+  return {
+    title: `${consultant.name} | Elite Enterprise Transformation Consulting Group`,
+    description: consultant.shortBio,
+  };
 }
 
 interface ConsultantPageProps {
@@ -138,7 +149,7 @@ export default async function ConsultantProfile({ params }: ConsultantPageProps)
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-light-gray">
+      <section className="py-16 bg-[color:var(--color-light-gray)]">
         <div className="container px-4 mx-auto text-center">
           <h2 className="mb-4 text-3xl font-bold">Work With {consultant.name.split(' ')[0]}</h2>
           <p className="max-w-2xl mx-auto mb-8 text-xl text-gray-600">

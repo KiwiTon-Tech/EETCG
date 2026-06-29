@@ -1,7 +1,10 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'Our Services | Elite Enterprise Transformation Consulting Group',
+  description: 'PMO-as-a-Service, Project Management, Program Management, Strategic Planning, Data & Analytics, Vendor Management, and AI Consulting for federal, state, and enterprise clients.',
+};
 
 export default function Services() {
   return (

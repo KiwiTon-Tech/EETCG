@@ -1,12 +1,16 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'PMO-as-a-Service Partnership | Elite Enterprise Transformation Consulting Group',
+  description: 'Three small businesses — EETCG, IT Connect, Inc., and Holloway Consulting Group — delivering an integrated PMO-as-a-Service for federal, state, and enterprise clients. Active TS, Q, and Public Trust clearances.',
+};
 
 export default function Partnerships() {
   return (
     <>
       {/* Page Header */}
-      <section className="pt-32 pb-16 text-white bg-navy">
+      <section className="pt-32 pb-16 text-white bg-[color:var(--color-navy)]">
         <div className="container px-4 mx-auto text-center">
           <h1 className="mb-4 text-4xl font-bold md:text-5xl">Partnerships</h1>
           <p className="max-w-3xl mx-auto text-xl">
@@ -53,7 +57,7 @@ export default function Partnerships() {
       </section>
 
       {/* The Partnership */}
-      <section className="py-16 bg-light-gray">
+      <section className="py-16 bg-[color:var(--color-light-gray)]">
         <div className="container px-4 mx-auto">
           <div className="max-w-3xl mx-auto mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold">The Partnership</h2>
@@ -64,7 +68,7 @@ export default function Partnerships() {
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <div className="p-6 bg-white rounded-lg shadow-md">
-              <div className="inline-block px-3 py-1 mb-3 text-xs font-bold text-white rounded bg-navy">
+              <div className="inline-block px-3 py-1 mb-3 text-xs font-bold text-white rounded bg-[color:var(--color-navy)]">
                 PRIME
               </div>
               <h3 className="mb-2 text-xl font-bold">IT Connect, Inc.</h3>
@@ -78,8 +82,8 @@ export default function Partnerships() {
               </p>
             </div>
 
-            <div className="p-6 bg-white border-2 rounded-lg shadow-md border-gold">
-              <div className="inline-block px-3 py-1 mb-3 text-xs font-bold rounded bg-gold text-navy">
+            <div className="p-6 bg-white border-2 rounded-lg shadow-md border-[color:var(--color-gold)]">
+              <div className="inline-block px-3 py-1 mb-3 text-xs font-bold rounded bg-[color:var(--color-gold)] text-[color:var(--color-navy)]">
                 EETCG
               </div>
               <h3 className="mb-2 text-xl font-bold">Elite Enterprise (EETCG)</h3>
@@ -95,7 +99,7 @@ export default function Partnerships() {
             </div>
 
             <div className="p-6 bg-white rounded-lg shadow-md">
-              <div className="inline-block px-3 py-1 mb-3 text-xs font-bold text-white rounded bg-navy">
+              <div className="inline-block px-3 py-1 mb-3 text-xs font-bold text-white rounded bg-[color:var(--color-navy)]">
                 PARTNER
               </div>
               <h3 className="mb-2 text-xl font-bold">Holloway Consulting Group</h3>
@@ -138,7 +142,7 @@ export default function Partnerships() {
       </section>
 
       {/* What We Bring on Day One */}
-      <section className="py-16 bg-light-gray">
+      <section className="py-16 bg-[color:var(--color-light-gray)]">
         <div className="container px-4 mx-auto">
           <div className="max-w-3xl mx-auto mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold">What We Bring on Day One</h2>
@@ -158,7 +162,7 @@ export default function Partnerships() {
               { title: 'Process & OCM', body: 'Process maps, training plans, stakeholder analysis, communication plans' },
             ].map((c) => (
               <div key={c.title} className="p-6 bg-white rounded-lg shadow-md">
-                <h3 className="mb-2 text-xl font-bold text-navy">{c.title}</h3>
+                <h3 className="mb-2 text-xl font-bold text-[color:var(--color-navy)]">{c.title}</h3>
                 <p className="text-gray-600">{c.body}</p>
               </div>
             ))}
@@ -214,7 +218,7 @@ export default function Partnerships() {
             ].map((e) => (
               <div key={e.title} className="p-6 bg-white rounded-lg shadow-md">
                 <h3 className="mb-2 text-lg font-bold">{e.title}</h3>
-                <p className="mb-3 text-sm font-semibold text-gold">{e.tag}</p>
+                <p className="mb-3 text-sm font-semibold text-[color:var(--color-navy)]">{e.tag}</p>
                 <p className="text-gray-600">{e.body}</p>
               </div>
             ))}
@@ -223,7 +227,7 @@ export default function Partnerships() {
       </section>
 
       {/* Small Business & Contracting */}
-      <section className="py-16 bg-light-gray">
+      <section className="py-16 bg-[color:var(--color-light-gray)]">
         <div className="container px-4 mx-auto">
           <div className="max-w-3xl mx-auto mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold">Small Business & Contracting Posture</h2>
@@ -272,7 +276,7 @@ export default function Partnerships() {
               { days: 'Days 61–90', title: 'Steady State', body: 'PMO operating, first milestone delivered or recovered, retrospective and roadmap to month four onward.' },
             ].map((p) => (
               <div key={p.title} className="p-6 bg-white rounded-lg shadow-md">
-                <p className="mb-2 text-sm font-bold text-gold">{p.days}</p>
+                <p className="mb-2 text-sm font-bold text-[color:var(--color-navy)]">{p.days}</p>
                 <h3 className="mb-2 text-xl font-bold">{p.title}</h3>
                 <p className="text-sm text-gray-600">{p.body}</p>
               </div>
@@ -287,7 +291,7 @@ export default function Partnerships() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 text-white bg-navy">
+      <section className="py-16 text-white bg-[color:var(--color-navy)]">
         <div className="container px-4 mx-auto text-center">
           <h2 className="mb-4 text-3xl font-bold">Let&apos;s Talk</h2>
           <p className="mb-2 text-xl">Carla Monroe, PMP</p>
@@ -295,31 +299,31 @@ export default function Partnerships() {
             Director, Project Management Office · Elite Enterprise
           </p>
           <div className="flex flex-col items-center justify-center mb-8 space-y-2 md:flex-row md:space-y-0 md:space-x-6">
-            <a href="mailto:cmonroe@itconnectinc.com" className="hover:text-gold">
+            <a href="mailto:cmonroe@itconnectinc.com" className="hover:text-[color:var(--color-gold)]">
               cmonroe@itconnectinc.com
             </a>
-            <a href="tel:+15055048240" className="hover:text-gold">
+            <a href="tel:+15055048240" className="hover:text-[color:var(--color-gold)]">
               (505) 504-8240
             </a>
           </div>
 
           <div className="max-w-2xl pt-6 mx-auto border-t border-white/20">
-            <p className="mb-3 text-sm font-semibold tracking-wider text-gold">PARTNERS</p>
+            <p className="mb-3 text-sm font-semibold tracking-wider text-[color:var(--color-gold)]">PARTNERS</p>
             <div className="flex flex-col items-center justify-center space-y-2 md:flex-row md:space-y-0 md:space-x-6">
-              <a href="https://www.itconnectinc.com/" target="_blank" rel="noopener noreferrer" className="hover:text-gold">
+              <a href="https://www.itconnectinc.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[color:var(--color-gold)]">
                 IT Connect, Inc.
               </a>
-              <a href="https://hollowaycg.com/" target="_blank" rel="noopener noreferrer" className="hover:text-gold">
+              <a href="https://hollowaycg.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[color:var(--color-gold)]">
                 Holloway Consulting Group
               </a>
-              <a href="https://eliteenterprisetcg.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold">
+              <a href="https://eliteenterprisetcg.com" target="_blank" rel="noopener noreferrer" className="hover:text-[color:var(--color-gold)]">
                 Elite Enterprise
               </a>
             </div>
           </div>
 
           <div className="mt-10">
-            <Link href="/contact" className="btn bg-gold text-navy hover:bg-opacity-90">
+            <Link href="/contact" className="btn bg-[color:var(--color-gold)] text-[color:var(--color-navy)] hover:bg-opacity-90">
               Schedule a Consultation
             </Link>
           </div>
