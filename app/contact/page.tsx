@@ -46,14 +46,15 @@ export default function ContactPage() {
     setSubmitError('');
 
     try {
-      // Track form submission
       trackFormSubmission('contact_form', formData.service || 'general');
-      
-      // In a real implementation, you would send this data to your backend or email service
-      // For now, we'll simulate a successful submission after a delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      
-      console.log('Form submitted:', formData);
+
+      const response = await fetch('https://formspree.io/f/info@eliteenterprisetcg.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) throw new Error('Submission failed');
+
       setSubmitSuccess(true);
       setFormData({
         name: '',

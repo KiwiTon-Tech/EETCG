@@ -1,4 +1,8 @@
+'use client';
+
 import Link from 'next/link';
+import Image from 'next/image';
+import { consultants } from '../data/consultants';
 import { trackCTAClick, trackServiceInterest } from '../utils/analytics';
 
 // Service card component

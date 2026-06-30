@@ -9,7 +9,11 @@ on:
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
-    name: Lighthouse Audit
+    name: Lighthouse Audit (${{ matrix.form-factor }})
+    strategy:
+      fail-fast: false
+      matrix:
+        form-factor: [desktop, mobile]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,7 +30,7 @@ jobs:
       - name: Build static site
         run: npm run build
 
-      - name: Run Lighthouse CI
-        run: npx lhci autorun
+      - name: Run Lighthouse CI (${{ matrix.form-factor }})
+        run: npx lhci autorun --config=lighthouserc.${{ matrix.form-factor }}.json
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

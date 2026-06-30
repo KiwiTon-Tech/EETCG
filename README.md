@@ -229,10 +229,10 @@ Route (app)
 
 Automated performance, accessibility, best-practices, and SEO audits run against the static export.
 
-- **Config**: `lighthouserc.json` — audits Home, About, Services, Consultants, Partnerships, Contact (3 runs each, desktop preset).
-- **Assertions**: Accessibility ≥ 0.9 and SEO ≥ 0.9 are **hard failures**; Performance and Best Practices ≥ 0.9 are warnings.
-- **CI**: `.github/workflows/lighthouse.yml` runs on every push/PR to `main`, posting status checks via the `LHCI_GITHUB_APP_TOKEN` repo secret.
-- **Local**: `npm run lighthouse` builds the site and runs the same audit; reports upload to temporary public storage.
+- **Configs**: `lighthouserc.desktop.json` and `lighthouserc.mobile.json` — each audits Home, About, Services, Consultants, Partnerships, Contact (3 runs per page).
+- **Assertions**: Accessibility ≥ 0.9 and SEO ≥ 0.9 are **hard failures** on both form factors. Performance/Best Practices are warnings (≥ 0.9 desktop, ≥ 0.8 mobile to account for 4G throttling).
+- **CI**: `.github/workflows/lighthouse.yml` runs a **desktop + mobile matrix** on every push/PR to `main`, posting status checks via the `LHCI_GITHUB_APP_TOKEN` repo secret.
+- **Local**: `npm run lighthouse` builds once and runs both audits; `npm run lighthouse:desktop` / `npm run lighthouse:mobile` run a single form factor. Reports upload to temporary public storage.
 
 ### Contact Form
 
@@ -315,7 +315,9 @@ npm run start
 | `npm run preview` | OpenNext build + local Cloudflare Worker preview |
 | `npm run deploy`  | OpenNext build + deploy to Cloudflare |
 | `npm run serve`   | Serve the static `out/` directory |
-| `npm run lighthouse` | Build + run Lighthouse CI audit locally |
+| `npm run lighthouse` | Build + run Lighthouse CI (desktop **and** mobile) |
+| `npm run lighthouse:desktop` | Build + run Lighthouse CI (desktop only) |
+| `npm run lighthouse:mobile` | Build + run Lighthouse CI (mobile only) |
 
 ## Future Enhancements
 - Add a blog section for thought leadership content.
