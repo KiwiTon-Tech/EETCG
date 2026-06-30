@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -249,6 +250,16 @@ export async function generateStaticParams() {
   return consultants.map((consultant) => ({
     id: consultant.id,
   }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const consultant = consultants.find(c => c.id === id);
+  if (!consultant) return {};
+  return {
+    title: `${consultant.name} | Elite Enterprise Transformation Consulting Group`,
+    description: consultant.shortBio,
+  };
 }
 
 interface ConsultantPageProps {

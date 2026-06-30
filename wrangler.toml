@@ -1,9 +1,8 @@
 # wrangler.toml for Cloudflare Pages
 name = "eetcg"
-main = ".open-next/worker.js"
 compatibility_date = "2025-03-25"
 compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = ".open-next"
+pages_build_output_dir = "out"
 
 # Environment variables (add as needed)
 [vars]
@@ -15,7 +14,3 @@ R2_PUBLIC_URL = "https://pub-d5883a1087a6409384f23475fe808a41.r2.dev" # Update w
 binding = "NEXT_INC_CACHE_R2_BUCKET"
 bucket_name = "eetcg-next-cache"
 preview_bucket_name = "eetcg-next-cache-preview"
-[
-    assets]
-directory = ".open-next/assets"
-binding = "ASSETS"

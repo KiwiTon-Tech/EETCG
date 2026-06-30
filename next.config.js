@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  allowedDevOrigins: ["192.168.4.34"],
   // Enable Cloudflare deployment with OpenNext
   experimental: {
     serverActions: {
