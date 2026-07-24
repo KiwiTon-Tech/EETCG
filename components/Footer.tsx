@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { PrivacySettingsButton } from './PrivacyPreferences';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -21,6 +22,9 @@ export const Footer = () => {
             </p>
             <p className="mt-2 text-sm">
               Powered by <a href="https://kiwiton-tech.com/" target="_blank" rel="noopener noreferrer" className="text-[color:var(--color-gold)] hover:underline">KiwiTon Technology</a>
+            </p>
+            <p className="mt-2">
+              <PrivacySettingsButton />
             </p>
           </div>
 

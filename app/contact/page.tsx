@@ -48,10 +48,16 @@ export default function ContactPage() {
     try {
       trackFormSubmission('contact_form', formData.service || 'general');
 
-      const response = await fetch('https://formspree.io/f/info@eliteenterprisetcg.com', {
+      const subject = [formData.service, formData.company].filter(Boolean).join(' — ') || 'General Inquiry';
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject,
+          message: `${formData.message}${formData.phone ? `\n\nPhone: ${formData.phone}` : ''}`,
+        }),
       });
       if (!response.ok) throw new Error('Submission failed');
 

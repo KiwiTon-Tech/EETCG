@@ -1,15 +1,23 @@
 'use client';
 
 import Script from 'next/script';
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { ANALYTICS_CONSENT_EVENT, getAnalyticsConsent, type AnalyticsConsent } from '../utils/privacy';
 
 // Route tracking component that uses useSearchParams
 function RouteTracker({ measurementId }: { measurementId: string }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  const isInitialPageView = useRef(true);
+
   useEffect(() => {
+    if (isInitialPageView.current) {
+      isInitialPageView.current = false;
+      return;
+    }
+
     const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
     
     // Send pageview event
@@ -25,9 +33,17 @@ function RouteTracker({ measurementId }: { measurementId: string }) {
 
 export function GoogleAnalytics() {
   const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const [consent, setConsent] = useState<AnalyticsConsent>(null);
 
-  // Don't render if no measurement ID is provided
-  if (!measurementId) {
+  useEffect(() => {
+    const updateConsent = () => setConsent(getAnalyticsConsent());
+
+    updateConsent();
+    window.addEventListener(ANALYTICS_CONSENT_EVENT, updateConsent);
+    return () => window.removeEventListener(ANALYTICS_CONSENT_EVENT, updateConsent);
+  }, []);
+
+  if (!measurementId || consent !== 'granted') {
     return null;
   }
 

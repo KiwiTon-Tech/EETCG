@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { GoogleAnalytics } from '../components/GoogleAnalytics';
+import { PrivacyPreferences } from '../components/PrivacyPreferences';
 import { fontClasses } from './services/fonts';
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en" className={fontClasses}>
       {/* Using system fonts defined in globals.css */}
       <body>
+        <PrivacyPreferences />
         <GoogleAnalytics />
         <a
           href="#main-content"
