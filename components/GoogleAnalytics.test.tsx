@@ -21,6 +21,8 @@ vi.mock('next/navigation', () => ({
 describe('GoogleAnalytics', () => {
   beforeEach(() => {
     vi.unstubAllEnvs();
+    window.localStorage.clear();
+    window.localStorage.setItem('analytics-consent', 'granted');
   });
 
   it('renders nothing when NEXT_PUBLIC_GA_MEASUREMENT_ID is not set', () => {
@@ -42,5 +44,12 @@ describe('GoogleAnalytics', () => {
     const { getByTestId } = render(<GoogleAnalytics />);
     const inlineScript = getByTestId('google-analytics');
     expect(inlineScript.innerHTML).toContain('G-TESTID123');
+  });
+
+  it('does not render GA scripts when analytics is opted out', () => {
+    vi.stubEnv('NEXT_PUBLIC_GA_MEASUREMENT_ID', 'G-TESTID123');
+    window.localStorage.setItem('analytics-consent', 'denied');
+    const { container } = render(<GoogleAnalytics />);
+    expect(container.firstChild).toBeNull();
   });
 });
